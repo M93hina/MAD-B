@@ -1,6 +1,8 @@
 package jp.ac.meijou.android.s241205019;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.mainText.setText(R.string.app_name);
+
+        binding.button.setOnClickListener(view -> {
+            var text = binding.editTextText.getText().toString();
+            binding.mainText.setText(text);
+        });
+
+        binding.editTextText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                binding.mainText.setText(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+        });
 
     }
 }
