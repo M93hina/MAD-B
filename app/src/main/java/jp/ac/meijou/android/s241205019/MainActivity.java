@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         prefDataStore = PrefDataStore.getInstance(this);
         binding.saveButton.setOnClickListener(view -> {
-            var Text = binding.editTextText.getText().toString();
-            prefDataStore.setString("text", Text);
+            var text = binding.editTextText.getText().toString();
+            prefDataStore.setString("text", text);
         });
 
     }
