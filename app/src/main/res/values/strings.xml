@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">MAD-B.019</string>
     <string name="main_text">MAD-B</string>
+    <string name="button_label">bento!</string>
+    <string name="bento">BASELINE BENTO</string>
 </resources>
