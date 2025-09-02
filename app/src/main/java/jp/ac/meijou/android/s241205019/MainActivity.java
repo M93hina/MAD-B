@@ -10,11 +10,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+
 import jp.ac.meijou.android.s241205019.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private PrefDataStore prefDataStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
+        });
+
+        prefDataStore = PrefDataStore.getInstance(this);
+        prefDataStore.getString("text")
+        .ifPresent(text -> binding.mainText.setText(text));
+
+        binding.saveButton.setOnClickListener(view -> {
+            var Text = binding.editTextText.getText().toString();
+            prefDataStore.setString("text", Text);
         });
 
     }
