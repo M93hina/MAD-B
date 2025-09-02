@@ -57,13 +57,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         prefDataStore = PrefDataStore.getInstance(this);
-        prefDataStore.getString("text")
-        .ifPresent(text -> binding.mainText.setText(text));
-
         binding.saveButton.setOnClickListener(view -> {
             var Text = binding.editTextText.getText().toString();
             prefDataStore.setString("text", Text);
         });
 
+    }
+
+    protected void onStart(){
+        super.onStart();
+        prefDataStore.getString("text")
+                .ifPresent(text -> binding.mainText.setText(text));
     }
 }
