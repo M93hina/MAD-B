@@ -8,9 +8,10 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="350dp"
+        android:id="@+id/main_text"
+        android:layout_width="352dp"
         android:layout_height="105dp"
-        android:text="Mobile Application Development - B"
+        android:text="@string/main_text"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
