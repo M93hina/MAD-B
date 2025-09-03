@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Optional;
 
 import jp.ac.meijou.android.s241205019.databinding.ActivityMain2Binding;
 import jp.ac.meijou.android.s241205019.databinding.ActivityMainBinding;
@@ -54,5 +58,30 @@ public class MainActivity2 extends AppCompatActivity {
             intent.putExtra("intent_text",binding.editTextSend.getText().toString());
             startActivity(intent);
         });
+
+        binding.buttonLaunch.setOnClickListener(view -> {
+            var intent = new Intent(this, MainActivity4.class);
+            getActivityResult.launch(intent);
+        });
     }
+
+    private final ActivityResultLauncher<Intent> getActivityResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                switch (result.getResultCode()) {
+                    case RESULT_OK -> {
+                        Optional.ofNullable(result.getData())
+                                .map(data -> data.getStringExtra("ret"))
+                                .map(text -> "Result: " + text)
+                                .ifPresent(text -> binding.textResult.setText(text));
+                    }
+                    case RESULT_CANCELED -> {
+                        binding.textResult.setText("Result: 拒否されました");
+                    }
+                    default -> {
+                        binding.textResult.setText("Result: Unknown(" + result.getResultCode() + ")");
+                    }
+                }
+            }
+    );
 }

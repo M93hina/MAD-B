@@ -1,5 +1,6 @@
 package jp.ac.meijou.android.s241205019;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -28,6 +29,18 @@ public class MainActivity4 extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        binding.buttonOk.setOnClickListener(view -> {
+            var intent = new Intent();
+            intent.putExtra("ret", "OK");
+            setResult(RESULT_OK, intent);
+            finish();
+        });
+
+        binding.buttonDeny.setOnClickListener(view -> {
+            setResult(RESULT_CANCELED);
+            finish();
         });
 
 
