@@ -69,5 +69,10 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         prefDataStore.getString("text")
                 .ifPresent(text -> binding.mainText.setText(text));
+        var intent = getIntent();
+        var text = intent.getStringExtra("intent_text");
+        if (text != null) {
+            binding.mainText.setText(text);
+        }
     }
 }
