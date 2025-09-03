@@ -48,5 +48,11 @@ public class MainActivity2 extends AppCompatActivity {
             intent.putExtra("intent_text",binding.editTextSend.getText().toString());
             startActivity(intent);
         });
+
+        binding.buttonSend4.setOnClickListener(view -> {
+            var intent = new Intent(this, MainActivity4.class);
+            intent.putExtra("intent_text",binding.editTextSend.getText().toString());
+            startActivity(intent);
+        });
     }
 }

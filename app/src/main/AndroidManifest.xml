@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADB">
         <activity
+            android:name=".MainActivity4"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
             android:exported="true">
             <intent-filter>
