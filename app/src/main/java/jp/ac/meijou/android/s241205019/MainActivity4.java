@@ -9,7 +9,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import jp.ac.meijou.android.s241205019.databinding.ActivityMain2Binding;
 import jp.ac.meijou.android.s241205019.databinding.ActivityMain4Binding;
 
 public class MainActivity4 extends AppCompatActivity {
