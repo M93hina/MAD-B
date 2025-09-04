@@ -2,6 +2,7 @@ package jp.ac.meijou.android.s241205019;
 
 import android.app.VoiceInteractor;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.PixelCopy;
 
@@ -60,5 +61,36 @@ public class MainActivity6 extends AppCompatActivity {
             }
         });
 
+        binding.buttonGet.setOnClickListener(view -> {
+            var text = binding.editTextTitle.getText().toString();
+            var url = Uri.parse("https://placehold.jp/bf4569/ffffff/700x700.png")
+                    .buildUpon()
+                    .appendQueryParameter("text", text)
+                    .build()
+                    .toString();
+
+            getImage(url);
+        });
+
+    }
+
+
+    private void getImage(String url){
+        var request = new Request.Builder()
+                .url(url)
+                .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                var bitmap = BitmapFactory.decodeStream(response.body().byteStream());
+                runOnUiThread(() -> binding.imageMain.setImageBitmap(bitmap));
+            }
+        });
     }
 }
