@@ -1,7 +1,6 @@
 package jp.ac.meijou.android.s241205019;
 
 import android.os.Bundle;
-import android.view.PixelCopy;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;

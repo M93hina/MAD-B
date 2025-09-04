@@ -1,10 +1,6 @@
 package jp.ac.meijou.android.s241205019;
 
 import android.graphics.BitmapFactory;
-import android.net.ConnectivityManager;
-import android.net.LinkAddress;
-import android.net.Network;
-import android.net.NetworkCapabilities;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,7 +12,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
-import java.util.stream.Collectors;
 
 import jp.ac.meijou.android.s241205019.databinding.ActivityMain6Binding;
 import okhttp3.Call;
